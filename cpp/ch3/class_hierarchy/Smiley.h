@@ -1,6 +1,7 @@
 #include <vector>
 #include "Point.h"
 #include "Circle.h"
+#include <iostream>
 
 using namespace std;
 
@@ -10,6 +11,7 @@ public:
     }
 
     ~Smiley() {
+        cout << "Smiley destructor called" << endl;
         delete mouth;
         for (auto p : eyes) delete p;
     }
