@@ -5,7 +5,7 @@ run:
 	./app
 
 clean:
-	rm app app.i
+	rm -f app app.i
 
 prep:
 	g++ -E -std=c++11 ./src/*.cpp > app.i
