@@ -20,6 +20,12 @@ public:
     T& operator[](int i); // access: return reference
     const T& operator[](int i) const; // access: return const reference
     int size() const { return sz; } // return number of elements
+
+    // Range-for loop support
+    T* begin() { return &elem[0]; } // pointer to first element
+    T* end() { return &elem[0] + sz; } // pointer to one-past-last element
+    const T* begin() const { return &elem[0]; } // pointer to first element
+    const T* end() const { return &elem[0] + sz; } // pointer to one-past-last element
 };
 
 class Negative_size : public std::length_error {
@@ -67,4 +73,31 @@ const T& Vector<T>::operator[](int i) const
 //         a.sz = 0;
 //     }
 //     return *this;
+// }
+
+/**
+ * Range-for loop support for Vector<T>
+ */
+// template<typename T>
+// T* begin(Vector<T>& x) 
+// { 
+//     return &x[0];               // pointer to first element
+// }
+
+// template<typename T>
+// T* end(Vector<T>& x)
+// {
+//     return &x[0] + x.size();    // pointer to one-past-last element
+// }
+
+// template<typename T>
+// const T* begin(const Vector<T>& x)
+// {
+//     return &x[0];               // pointer to first element
+// }
+
+// template<typename T>
+// const T* end(const Vector<T>& x)
+// {
+//     return &x[0] + x.size();    // pointer to one-past-last element
 // }

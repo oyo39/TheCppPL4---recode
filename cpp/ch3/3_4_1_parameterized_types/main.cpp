@@ -52,6 +52,13 @@ void write(const Vector<list<int>>& vli)
     }
 }
 
+void f2(const Vector<string> &vs)
+{
+    for (auto& s : vs) {
+        cout << s << '\n';
+    }
+}
+
 int main() {
     Vector<char> vc(200);       // vector of 200 characters
     Vector<string> vs(17);      // vector of 17 strings
@@ -65,6 +72,10 @@ int main() {
 
             switch (vt) {
                 case VectorType::char_vector: {
+                    if (size > vc.size()) {
+                        throw runtime_error("Size exceeds char vector capacity");
+                    }
+
                     for (int i = 0; i < size; ++i) {
                         cin >> vc[i];
                     }
@@ -72,6 +83,10 @@ int main() {
                     continue; // Skip to the next iteration after reading char vector
                 }
                 case VectorType::string_vector: {
+                    if (size > vs.size()) {
+                        throw runtime_error("Size exceeds string vector capacity");
+                    }
+
                     for (int i = 0; i < size; ++i) {
                         cin >> vs[i];
                     }
@@ -79,6 +94,10 @@ int main() {
                     continue; // Skip to the next iteration after reading string vector
                 }
                 case VectorType::list_int_vector: {
+                    if (size > vli.size()) {
+                        throw runtime_error("Size exceeds list<int> vector capacity");
+                    }
+                    
                     for (int i = 0; i < size; ++i) {
                         int list_size;
                         cin >> list_size;
@@ -98,13 +117,16 @@ int main() {
             }
         } catch (const exception& e) {
             cerr << "Error reading char vector: " << e.what() << endl;
-            break;
+            return 1; // Exit the program on error
         }
     }
 
     write(vc);
     write(vs);
     write(vli);
+
+    cout << "Demonstrating range-for loop with Vector<string>:" << endl;
+    f2(vs);
 
     return 0;
 }
