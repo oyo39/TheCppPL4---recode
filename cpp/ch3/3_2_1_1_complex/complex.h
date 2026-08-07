@@ -27,3 +27,6 @@ complex operator+(complex, complex);
 complex operator-(complex, complex);
 complex operator*(complex, complex);
 complex operator/(complex, complex);
+bool operator==(complex, complex);
+bool operator!=(complex, complex);
+complex operator-(complex);

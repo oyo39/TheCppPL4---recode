@@ -39,9 +39,7 @@ std::string Vector::to_string() const
 Vector read(std::istream& is)
 {
     Vector v{};
-    double d;
-    while (is >> d) {
+    for(double d; is >> d;)
         v.push_back(d);
-    }
     return v;
 }
